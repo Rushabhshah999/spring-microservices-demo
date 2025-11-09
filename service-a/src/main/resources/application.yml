@@ -1,0 +1,18 @@
+logging:
+  file:
+    name: logs/servicea.log
+  level:
+    root: INFO
+    com.company: DEBUG
+
+server:
+  port: 8081
+
+spring:
+  application:
+    name: service-a
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
