@@ -16,7 +16,7 @@ target/
 *.iml
 *.log
 *.class
-
+/logs/
 ### Eclipse ###
 .apt_generated
 .classpath
