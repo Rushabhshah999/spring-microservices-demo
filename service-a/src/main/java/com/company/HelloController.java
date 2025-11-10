@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
     @GetMapping("/hello")
     public String hello() throws InterruptedException{
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
         return "Hello from Service A!";
         ////http://localhost:8081/hello
     }
