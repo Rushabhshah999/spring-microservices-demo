@@ -37,14 +37,14 @@ public class GatewayConfig {
                         .uri("lb://service-a"))
 
                 // Mock route for testing headers
-                .route("test", r -> r.path("/test/**")
-                        .filters(f -> f.setStatus(200)
+                .route("service-b", r -> r.path("/service-b/**")
+                        .filters(f -> f.stripPrefix(1)
                                 .filters(
                                         addResponseHeaderFilterFactory.apply(createHeader("X-Gateway", "RushabhSpringCloudGateway")),
                                         addResponseHeaderFilterFactory.apply(createHeader("X-API-Version", "v1.0.0")),
                                         addResponseHeaderFilterFactory.apply(createHeader("X-Environment", "Production"))
                                 ))
-                        .uri("no://op"))
+                        .uri("lb://service-b"))
 
                 .build();
     }
