@@ -18,7 +18,7 @@ public class HelloController {
     public String servicea() {
 
 
-        return "service A called!";
+        return "service A called! using fin client";
         ////http://localhost:8081/hello
     }
 

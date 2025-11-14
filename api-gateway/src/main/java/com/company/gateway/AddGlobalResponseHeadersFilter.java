@@ -17,9 +17,9 @@ public class AddGlobalResponseHeadersFilter implements GlobalFilter, Ordered {
         return chain.filter(exchange).then(Mono.fromRunnable(() -> {
             if (!exchange.getResponse().isCommitted()) {
                 HttpHeaders headers = exchange.getResponse().getHeaders();
-                headers.add("X-Gateway", "RushabhSpringCloudGateway");
-                headers.add("X-API-Version", "v1.0.0");
-                headers.add("X-Environment", "Production");
+                headers.add("X-Gateway-AddGlobalResponseHeadersFilter", "ProductionSpringCloudGateway");
+                headers.add("X-API-Version-AddGlobalResponseHeadersFilter", "v1.0.0");
+                headers.add("X-Environment-AddGlobalResponseHeadersFilter", "Production");
             }
         }));
     }

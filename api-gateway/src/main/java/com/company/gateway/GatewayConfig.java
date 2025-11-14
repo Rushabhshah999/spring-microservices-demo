@@ -30,7 +30,7 @@ public class GatewayConfig {
                 .route("service-a", r -> r.path("/service-a/**")
                         .filters(f -> f.stripPrefix(1)
                                 .filters(
-                                addResponseHeaderFilterFactory.apply(createHeader("Y-Gateway", "Swati")),
+                                addResponseHeaderFilterFactory.apply(createHeader("Y-Gateway", "YGateway")),
                                 addResponseHeaderFilterFactory.apply(createHeader("Y-API-Version", "v2.0.0")),
                                 addResponseHeaderFilterFactory.apply(createHeader("Y-Environment", "Test"))
                         ))
@@ -40,7 +40,7 @@ public class GatewayConfig {
                 .route("service-b", r -> r.path("/service-b/**")
                         .filters(f -> f.stripPrefix(1)
                                 .filters(
-                                        addResponseHeaderFilterFactory.apply(createHeader("X-Gateway", "RushabhSpringCloudGateway")),
+                                        addResponseHeaderFilterFactory.apply(createHeader("X-Gateway", "X-Gateway")),
                                         addResponseHeaderFilterFactory.apply(createHeader("X-API-Version", "v1.0.0")),
                                         addResponseHeaderFilterFactory.apply(createHeader("X-Environment", "Production"))
                                 ))
