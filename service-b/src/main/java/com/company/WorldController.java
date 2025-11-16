@@ -1,30 +1,38 @@
 package com.company;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
 public class WorldController {
 
     @Autowired
-    private  ServiceAClient serviceAClient;
+    private ServiceAClient serviceAClient;
 
-    @GetMapping(value ="/world" , produces = { "application/json" })
-    public String world() throws InterruptedException{
-        Thread.sleep(1000);
-        return "World from Service B!";
-        //http://localhost:8082/world
+    @Autowired
+    private CircuitBreakerFactory circuitBreakerFactory;
+
+    @GetMapping(value = "/world", produces = "application/json")
+    public Map<String, String> world() {
+        return Map.of("message", "World from Service B!");
     }
 
-    @GetMapping(value ="/feign" , produces = { "application/json" })
-    public Map<String,String> feign() throws InterruptedException{
+    @GetMapping(value = "/feign", produces = "application/json")
+    public Map<String, String> feign() {
 
-       //String str =  serviceAClient.getServiceA();
-        return Map.of("Service A",serviceAClient.getServiceA().toString());
-       // return str;
-        //http://localhost:8082/world
+        // Wrap Feign call in a Resilience4j CircuitBreaker
+        return circuitBreakerFactory.create("service-a").run(
+                () -> serviceAClient.getServiceA(),
+                throwable -> {
+                    Map<String, String> map = new HashMap<>();
+                    map.put("error", "Service A is unavailable");
+                    return map;
+                }
+        );
     }
 }
