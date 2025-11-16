@@ -36,8 +36,6 @@ public class AggregatorController {
                 restTemplate.getForObject(serviceBUrl, String.class))
                 .exceptionally(ex -> { return "Service B failed: " + ex.getMessage();});
 
-        System.out.println("weldone Rushabh");
-
         CompletableFuture.allOf(aFuture, bFuture).join();
 
         return "Results merged: [" + aFuture.get() + " | " + bFuture.get() + "]";
