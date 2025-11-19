@@ -1,12 +1,17 @@
+/*
+ * Copyright 2025 the original author or authors...
+ */
 package com.company.gateway;
+
+/* This is a comment. */
 
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-import org.springframework.http.HttpHeaders;
 
 @Component
 public class AddGlobalResponseHeadersFilter implements GlobalFilter, Ordered {

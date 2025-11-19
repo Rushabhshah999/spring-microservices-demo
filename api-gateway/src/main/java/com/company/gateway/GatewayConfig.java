@@ -1,4 +1,9 @@
+/*
+ * Copyright 2025 the original author or authors...
+ */
 package com.company.gateway;
+
+/* This is a comment. */
 
 import org.springframework.cloud.gateway.filter.factory.AddResponseHeaderGatewayFilterFactory;
 import org.springframework.cloud.gateway.route.RouteLocator;

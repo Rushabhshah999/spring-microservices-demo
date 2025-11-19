@@ -1,4 +1,9 @@
+/*
+ * Copyright 2025 the original author or authors...
+ */
 package com.company;
+
+/* This is a comment. */
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;

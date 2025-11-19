@@ -1,0 +1,49 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: org.openrewrite.AdoptAssertJ
+displayName: Adopt AssertJ
+description: Adopt AssertJ and apply best practices to assertions.
+recipeList:
+  - org.openrewrite.java.testing.assertj.Assertj
+  - org.openrewrite.Java25ForTests
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: org.openrewrite.Java25ForTests
+displayName: Adopt Java 25 for tests
+description: >
+  Upgrade your tests to Java 25.
+preconditions:
+  - org.openrewrite.java.search.IsLikelyTest
+recipeList:
+  - org.openrewrite.java.migrate.UpgradeToJava25
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.openrewrite.AddCommentToMethodExample
+displayName: Add comment to method declarations example
+recipeList:
+  - org.openrewrite.java.AddCommentToMethod:
+      comment: This is a comment.
+      methodPattern: java.util.List add*(..)
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.openrewrite.AddCommentToMethodInvocationsExample
+displayName: Add comment to method invocations example
+recipeList:
+  - org.openrewrite.java.AddCommentToMethodInvocations:
+      comment: This is a comment.
+      methodPattern: java.util.List add*(..)
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.openrewrite.AddLicenseHeaderExample
+displayName: Add license header example
+recipeList:
+  - org.openrewrite.java.AddLicenseHeader:
+      licenseText: Copyright ${CURRENT_YEAR} the original author or authors...
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.openrewrite.AddCommentToImportExample
+displayName: Add comment to import statement example
+recipeList:
+  - org.openrewrite.java.AddCommentToImport:
+      comment: This is a comment.
+      typePattern: org.springframework..*
