@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Map;
 
-@FeignClient(name = "service-a") // Notice: no URL!
+@FeignClient(name = "service-a" ,  configuration = ServiceAFeignConfig.class) // Notice: no URL!
 public interface ServiceAClient {
 
     @GetMapping(value ="/servicea" , produces = { "application/json" })

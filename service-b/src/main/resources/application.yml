@@ -1,3 +1,10 @@
+logging:
+  file:
+    name: logs/serviceb.log
+  level:
+    root: INFO
+    com.company: DEBUG
+
 server:
   port: 8082
 
