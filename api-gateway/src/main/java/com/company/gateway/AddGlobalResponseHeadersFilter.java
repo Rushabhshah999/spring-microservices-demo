@@ -32,6 +32,6 @@ public class AddGlobalResponseHeadersFilter implements GlobalFilter, Ordered {
     @Override
     public int getOrder() {
         // Run after routing, before response is sent
-        return -1;
+        return Ordered.LOWEST_PRECEDENCE;
     }
 }
