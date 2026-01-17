@@ -16,3 +16,6 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+# Spring Cloud Gateway’s discovery locator, the gateway automatically adds
+# a predicate like Path=/service-name/**
